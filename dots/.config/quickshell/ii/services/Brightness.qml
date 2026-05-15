@@ -160,10 +160,12 @@ Singleton {
                 const rawValueRounded = Math.max(Math.floor(brightnessValue * monitor.rawMaxBrightness), 1);
                 setProc.exec(["ddcutil", "-b", busNum, "setvcp", "10", rawValueRounded]);
             } else {
-                const valuePercentNumber = Math.floor(brightnessValue * 100);
-                let valuePercent = `${valuePercentNumber}%`;
-                if (valuePercentNumber == 0) valuePercent = "1"; // Prevent fully black
-                setProc.exec(["brightnessctl", "--class", "backlight", "s", valuePercent, "--quiet"])
+                // const valuePercentNumber = Math.floor(brightnessValue * 100);
+                // let valuePercent = `${valuePercentNumber}%`;
+                // if (valuePercentNumber == 0) valuePercent = "1"; // Prevent fully black
+                let realValue = brightnessValue * monitor.rawMaxBrightness
+                if(realValue % 16384 == 0) realValue = 1
+                setProc.exec(["brightnessctl", "--class", "backlight", "s", realValue, "--quiet"])
             }
         }
 
