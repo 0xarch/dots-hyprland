@@ -1,7 +1,7 @@
 groups=(illogical-impulse)
 pkgname=illogical-impulse-fonts-themes
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Illogical Impulse Fonts and Theming Dependencies'
 arch=(any)
 license=(None)
@@ -9,7 +9,7 @@ depends=(
   adw-gtk-theme-git
   breeze
   breeze-plus
-  darkly-bin
+  darkly-qt6-git
   eza
   fish
   fontconfig
@@ -17,9 +17,12 @@ depends=(
   matugen
   otf-space-grotesk
   starship
-  ttf-jetbrains-mono-nerd
   ttf-material-symbols-variable-git
   ttf-readex-pro
   ttf-rubik-vf
   ttf-twemoji
+)
+optdepends=(
+  darkly-qt5-git
+  ttf-jetbrains-mono-nerd # use firacode nerd font
 )
